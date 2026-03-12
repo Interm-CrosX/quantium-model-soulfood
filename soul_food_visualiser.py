@@ -24,7 +24,7 @@ fig.add_vline(
 
 app.layout = html.Div([
     html.H1(children='Pink Morsel Sales Data', style={'textAlign': 'center'}),
-    dcc.Dropdown(['north', 'south', 'east', 'west'], value='north', id='region-dropdown', placeholder='Select a region...'),
+    dcc.Dropdown(['north', 'south', 'east', 'west'], id='region-dropdown', placeholder='Select a region...'),
     html.Div(id='dd-output-container'),
     dcc.Graph(id='pinkM_Sales', figure=fig),
 ])
@@ -36,7 +36,10 @@ app.layout = html.Div([
 )
 
 def update_output(value):
-    filtered_df = df[df['region'] == value]
+    if value is None:
+        filtered_df=df
+    else:
+        filtered_df = df[df['region'] == value]
     return f'You have selected {value}', fig
 
 
