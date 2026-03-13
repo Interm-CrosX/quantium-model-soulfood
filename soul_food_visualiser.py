@@ -13,7 +13,7 @@ df = df.sort_values('date')
 
 app.layout = html.Div([
     html.H1(children='Pink Morsel Sales Data', style={'textAlign': 'center'}),
-    dcc.Dropdown(['north', 'south', 'east', 'west'], id='region-dropdown', placeholder='Select a region...'),
+    dcc.RadioItems(['north', 'south', 'east', 'west', 'all'], id='region-radio', value='all', inline=True),
     html.Div(id='dd-output-container'),
     dcc.Graph(id='pinkM_Sales'),
 ])
@@ -21,11 +21,11 @@ app.layout = html.Div([
 @app.callback(
 [Output('dd-output-container', 'children'),
         Output('pinkM_Sales', 'figure'),],
-    [Input('region-dropdown', 'value')]
+    [Input('region-radio', 'value')]
 )
 
 def update_output(value):
-    if value is None:
+    if value == 'all' or value is None:
         filtered_df = df
         region_text = 'Showing all regions'
     else:
