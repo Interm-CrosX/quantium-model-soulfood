@@ -11,22 +11,11 @@ df = df.sort_values('date')
 # print(df[:5])
 
 
-fig = go.Figure()
-fig.add_scatter(
-    x=df['date'], y=df['sales'])
-fig.update_layout(
-    xaxis_title="Date",
-    yaxis_title="Sales",
-    title="Pink Morsel Sales over time",
-)
-fig.add_vline(
-    x='2021-01-15', line_dash='dash', line_color='red',)
-
 app.layout = html.Div([
     html.H1(children='Pink Morsel Sales Data', style={'textAlign': 'center'}),
     dcc.Dropdown(['north', 'south', 'east', 'west'], id='region-dropdown', placeholder='Select a region...'),
     html.Div(id='dd-output-container'),
-    dcc.Graph(id='pinkM_Sales', figure=fig),
+    dcc.Graph(id='pinkM_Sales'),
 ])
 
 @app.callback(
@@ -37,12 +26,22 @@ app.layout = html.Div([
 
 def update_output(value):
     if value is None:
-        filtered_df=df
+        filtered_df = df
+        region_text = 'Showing all regions'
     else:
         filtered_df = df[df['region'] == value]
-    return f'You have selected {value}', fig
+        region_text = f'You have selected {value}'
 
+    fig = go.Figure()
+    fig.add_scatter(x=filtered_df['date'], y=filtered_df['sales'])
+    fig.update_layout(
+        xaxis_title='Date',
+        yaxis_title='Sales',
+        title='Pink Morsel Sales over time'
+    )
+    fig.add_vline(x='2021-01-15', line_dash='dash', line_color='red')
 
+    return region_text, fig
 
 if __name__ == '__main__':
     app.run(debug=True)
