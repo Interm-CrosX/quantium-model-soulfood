@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #2A7B9B;
+    background: linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+    min-height: 100vh;
+}
+.region-text{
+    font-size: 28px;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.main-title {
+    font-size: 5em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1.5px hotpink;
+    text-shadow: 0 0 0 #fff;
+    transition: all 250ms;
+}
+
+.main-title:hover {
+    text-shadow: 4px 4px 0 #ffff00;
+    transform: translate(-2px, -2px);
+}
+
+.pink-morsel-sales {
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    background-color: #ffffff;
+}
+
+.pink-morsel-sales:hover {
+    transform: scale(1.02);
+    transition: transform 0.2s ease-in-out;
+}
+
+.region-selector .region-label {
+    background-color: rgba(34, 216, 189, 0.84);
+    color: white;
+    padding: 1px 6px;
+    border-radius: 20px;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.region-selector .region-label:hover {
+    background-color: #e8735a;
+}
+.region-selector .region-input:checked + .region-label {
+    background-color: #106bf7;
+    color: #fff;
+}
+
+
