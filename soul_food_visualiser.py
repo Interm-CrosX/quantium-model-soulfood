@@ -12,7 +12,7 @@ df = df.sort_values('date')
 
 
 app.layout = html.Div(className='container', children=[
-    html.H1(children='Pink Morsel Sales Data', style={'textAlign': 'center'}, className='main-title'),
+    html.H1(children='Pink Morsel Sales Data', style={'textAlign': 'center'}, className='main-title', id='header'),
     html.Br(),
     html.Div(
         id='dd-output-container',
